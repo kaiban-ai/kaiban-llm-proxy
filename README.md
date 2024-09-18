@@ -9,7 +9,7 @@ The project is built with Next.js and includes separate proxy implementations fo
 ```plaintext
 kaiban-llm-proxy
 ├── app
-│   ├── proxy
+│   ├── llm
 │   │   ├── anthropic
 │   │   ├── gemini
 │   │   ├── mistral
@@ -20,7 +20,7 @@ kaiban-llm-proxy
 └── page.js
 ```
 
-Each directory under `/proxy` corresponds to a provider-specific proxy that securely forwards requests to the respective API.
+Each directory under `/llm` corresponds to a provider-specific proxy that securely forwards requests to the respective API.
 
 ## Features
 
@@ -85,7 +85,7 @@ const profileAnalyst = new Agent({
     tools: [],
     llmConfig: {
       provider: "openai",
-      apiBaseUrl: "http://localhost:3000/proxy/openai",
+      apiBaseUrl: "http://localhost:3000/llm/openai",
       // apiBaseUrl: "https://your_custom_url.com",      
     }
 });
@@ -101,7 +101,7 @@ const resumeWriter = new Agent({
     tools: [],
     llmConfig: {
       provider: "openai",
-      apiBaseUrl: "http://localhost:3000/proxy/openai",
+      apiBaseUrl: "http://localhost:3000/llm/openai",
       // apiBaseUrl: "https://your_custom_url.com",
     }     
 });
@@ -139,7 +139,7 @@ const team = new Team({
      where I worked with Vue and Tailwind. 
      I earned a Bachelor of Science in Computer Science from FIU in 2018, 
      and I completed a JavaScript bootcamp that same year.` },  // Initial input for the first task
-  env: {OPENAI_API_KEY: import.meta.env.VITE_OPENAI_API_KEY, ANTHROPIC_API_KEY: import.meta.env.VITE_ANTHROPIC_API_KEY}
+  env: {OPENAI_API_KEY: 'any-fake-api-key-here'}
 });
 
 export default team;
@@ -153,12 +153,12 @@ export default team;
 
 ## Proxy Directories
 
-Each LLM provider has its own directory under `/app/proxy`:
+Each LLM provider has its own directory under `/llm`:
 
-1. **`/proxy/openai`**: Proxy for OpenAI APIs
-2. **`/proxy/anthropic`**: Proxy for Anthropic APIs
-3. **`/proxy/gemini`**: Proxy for Google's Gemini APIs
-4. **`/proxy/mistral`**: Proxy for Mistral APIs
+1. **`/llm/openai`**: Proxy for OpenAI APIs
+2. **`/llm/anthropic`**: Proxy for Anthropic APIs
+3. **`/llm/gemini`**: Proxy for Google's Gemini APIs
+4. **`/llm/mistral`**: Proxy for Mistral APIs
 
 Each proxy includes:
 - **POST Handler**: For sending requests to the provider's API.
