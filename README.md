@@ -11,7 +11,7 @@ kaiban-llm-proxy
 ├── app
 │   ├── llm
 │   │   ├── anthropic
-│   │   ├── gemini
+│   │   ├── google
 │   │   ├── mistral
 │   │   └── openai
 ├── favicon.ico
@@ -36,7 +36,7 @@ Each directory under `/llm` corresponds to a provider-specific proxy that secure
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-repo/kaiban-llm-proxy.git
+git clone https://github.com/kaiban-ai/kaiban-llm-proxy.git
 cd kaiban-llm-proxy
 ```
 
@@ -55,7 +55,7 @@ You need to set up API keys for each provider in your environment variables:
 
 OPENAI_API_KEY=your-openai-api-key
 ANTHROPIC_API_KEY=your-anthropic-api-key
-GOOGLE_GEMINI_API_KEY=your-google-gemini-api-key
+GOOGLE_API_KEY=your-google-api-key
 MISTRAL_API_KEY=your-mistral-api-key
 ```
 
@@ -85,8 +85,7 @@ const profileAnalyst = new Agent({
     tools: [],
     llmConfig: {
       provider: "openai",
-      apiBaseUrl: "http://localhost:3000/llm/openai",
-      // apiBaseUrl: "https://your_custom_url.com",      
+      apiBaseUrl: "http://localhost:3000/llm/openai",    
     }
 });
 
@@ -102,7 +101,6 @@ const resumeWriter = new Agent({
     llmConfig: {
       provider: "openai",
       apiBaseUrl: "http://localhost:3000/llm/openai",
-      // apiBaseUrl: "https://your_custom_url.com",
     }     
 });
 
@@ -157,7 +155,7 @@ Each LLM provider has its own directory under `/llm`:
 
 1. **`/llm/openai`**: Proxy for OpenAI APIs
 2. **`/llm/anthropic`**: Proxy for Anthropic APIs
-3. **`/llm/gemini`**: Proxy for Google's Gemini APIs
+3. **`/llm/google`**: Proxy for Google's Gemini APIs
 4. **`/llm/mistral`**: Proxy for Mistral APIs
 
 Each proxy includes:
